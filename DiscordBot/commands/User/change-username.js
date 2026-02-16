@@ -27,7 +27,6 @@ module.exports = {
 
         const username = interaction.options.getString('username');
 
-
         if (user.lastUsernameChange) {
             const oneWeek = 7 * 24 * 60 * 60 * 1000;
             const timeElapsed = Date.now() - new Date(user.lastUsernameChange).getTime();

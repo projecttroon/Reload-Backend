@@ -320,25 +320,35 @@
 			"platformMappings": {},
 			"displayDataId": "ReloadTournament",
 			"eventGroup": "",
-			"announcementTime": "2025-02-20T00:00:00.000Z",
+			"announcementTime": "2026-02-14T00:00:00.000Z",
 			"appId": null,
 			"environment": null,
 			"metadata": {
+				"TrackedStats": [
+					"PLACEMENT_STAT_INDEX",
+					"TEAM_ELIMS_STAT_INDEX",
+					"MATCH_PLAYED_STAT"
+				],
 				"minimumAccountLevel": 0
 			},
 			"eventWindows": [
 				{
 					"eventWindowId": "ReloadTournament_Event1",
 					"eventTemplateId": "EventTemplate_ReloadTournament",
-					"countdownBeginTime": "2025-03-10T17:00:00.000Z",
-					"beginTime": "2025-03-10T19:00:00.000Z",
-					"endTime": "2025-03-10T22:00:00.000Z",
+					"countdownBeginTime": "2026-02-14T00:00:00.000Z",
+					"beginTime": "2026-02-15T00:00:00.000Z",
+					"endTime": "2036-02-15T00:00:00.000Z",
 					"blackoutPeriods": [],
 					"round": 1,
 					"payoutDelay": 0,
 					"isTBD": false,
 					"canLiveSpectate": true,
-					"scoreLocations": [],
+					"scoreLocations": [
+						{
+							"scoreMode": "persistent",
+							"scoreId": "ReloadPoints"
+						}
+					],
 					"visibility": "unlocked",
 					"requireAllTokens": [],
 					"requireAnyTokens": [],
@@ -353,8 +363,8 @@
 					}
 				}
 			],
-			"beginTime": "2025-03-10T19:00:00.000Z",
-			"endTime": "2025-03-10T22:00:00.000Z"
+			"beginTime": "2026-02-15T00:00:00.000Z",
+			"endTime": "2036-02-15T00:00:00.000Z"
 		}
 	],
 	"player": {
@@ -662,6 +672,7 @@
 			"playlistId": "Playlist_ShowdownTournament_Solo",
 			"matchCap": 10,
 			"liveSessionAttributes": [],
+			"persistentScoreId": "ReloadPoints",
 			"scoringRules": [
 				{
 					"matchRule": "lte",

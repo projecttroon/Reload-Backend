@@ -127,7 +127,7 @@ module.exports = {
                     { $set: { "profiles.athena": athena, "profiles.common_core": common_core } }
                 );
 
-                await functions.updateCosmeticCount(targetUser.accountId);
+
 
 
                 const embed = new MessageEmbed()
@@ -214,6 +214,33 @@ module.exports = {
 
             if (pack === "full") {
                 itemsToGive = allItems.items;
+
+                // Preservation of Loadouts
+                let loadouts = {};
+                const currentItems = profile.profiles.athena.items || {};
+
+                for (const key in currentItems) {
+                    if (key.includes("loadout") || (currentItems[key].templateId && currentItems[key].templateId.startsWith("CosmeticLocker:"))) {
+                        loadouts[key] = currentItems[key];
+                    }
+                }
+
+                if (Object.keys(loadouts).length === 0) {
+                    try {
+                        const defaultAthena = destr(fs.readFileSync(path.join(__dirname, "../../../Config/DefaultProfiles/athena.json"), 'utf8'));
+                        if (defaultAthena && defaultAthena.items) {
+                            for (const key in defaultAthena.items) {
+                                if (key.includes("loadout") || (defaultAthena.items[key].templateId && defaultAthena.items[key].templateId.startsWith("CosmeticLocker:"))) {
+                                    loadouts[key] = defaultAthena.items[key];
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        log.error("Failed to read default athena.json for loadout restoration", e);
+                    }
+                }
+
+                itemsToGive = { ...itemsToGive, ...loadouts };
             } else if (pack === "og") {
                 const ogIds = [
                     "AthenaCharacter:CID_039_Athena_Commando_F_Disco",
@@ -253,7 +280,7 @@ module.exports = {
                 { $set: { "profiles.athena.items": itemsToGive } }
             );
 
-            await functions.updateCosmeticCount(targetUser.accountId);
+
 
 
             const embed = new MessageEmbed()

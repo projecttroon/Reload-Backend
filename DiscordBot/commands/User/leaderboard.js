@@ -2,7 +2,6 @@ const { MessageEmbed } = require("discord.js");
 const Arena = require("../../../model/arena.js");
 const User = require("../../../model/user.js");
 
-
 let cachedDescription = null;
 let lastUpdate = 0;
 const CACHE_DURATION = 60 * 60 * 1000;

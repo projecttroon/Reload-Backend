@@ -2,6 +2,9 @@ module.exports = function(websiteApp) {
     const express = require("express");
     const path = require("path");
     const config = require("../Config/config.json");
+    const User = require("../model/user.js");
+    const UserStats = require("../model/userstats.js");
+    const log = require("../structs/log.js");
 
     const DISCORD_API_URL = 'https://discord.com/api';
     const CLIENT_ID = config.Website.clientId;
@@ -36,5 +39,60 @@ module.exports = function(websiteApp) {
 
     websiteApp.get('/account-exists', (req, res) => {
         res.sendFile(path.join(__dirname, './Data/html/accountExists.html'));
+    });
+
+    websiteApp.get('/leaderboard', (req, res) => {
+        res.sendFile(path.join(__dirname, './Data/html/leaderboard.html'));
+    });
+
+    websiteApp.get('/api/website/leaderboard', async (req, res) => {
+        try {
+            const playlist = req.query.playlist || "solo";
+            const typeStat = req.query.type || "placetop1";
+            const region = req.query.region || "Global";
+            const limit = parseInt(req.query.limit) || 50;
+            const search = req.query.search ? req.query.search.toLowerCase() : null;
+
+            const allUsers = await User.find({ isServer: false });
+            const leaderboardEntries = [];
+
+            for (const user of allUsers) {
+                const stat = await UserStats.findOne({ accountId: user.accountId });
+                
+                const playlistStats = stat ? stat[playlist] : null;
+                const value = playlistStats ? (playlistStats[typeStat] || 0) : 0;
+                
+                
+                if (region !== "Global" && region !== "NA" && region !== "EU" && region !== "ASIA") {
+                }
+
+                leaderboardEntries.push({
+                    rank: 0,
+                    accountId: user.accountId,
+                    username: user.username,
+                    value: value,
+                    kills: playlistStats ? (playlistStats.kills || 0) : 0,
+                    wins: playlistStats ? (playlistStats.placetop1 || 0) : 0,
+                    matches: playlistStats ? (playlistStats.matchesplayed || 0) : 0
+                });
+            }
+
+            leaderboardEntries.sort((a, b) => b.value - a.value);
+            
+            
+            leaderboardEntries.forEach((entry, index) => {
+                entry.rank = index + 1;
+            });
+
+            if (search) {
+                const searchResult = leaderboardEntries.find(e => e.username.toLowerCase().includes(search));
+                return res.json(searchResult ? [searchResult] : []);
+            }
+
+            res.json(leaderboardEntries.slice(0, limit));
+        } catch (err) {
+            log.error("Website Leaderboard API Error:", err);
+            res.status(500).json({ error: "Internal server error" });
+        }
     });
 };

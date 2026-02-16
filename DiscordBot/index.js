@@ -1,6 +1,7 @@
 const { Client, Intents, MessageEmbed } = require("discord.js");
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.DIRECT_MESSAGES] });
 global.discordClient = client;
+global.botConnected = false;
 const fs = require("fs");
 const path = require("path");
 const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
@@ -8,6 +9,7 @@ const log = require("../structs/log.js");
 const Users = require("../model/user.js");
 
 client.once("ready", () => {
+    global.botConnected = true;
     log.bot("Bot is up and running!");
 
     if (config.bEnableBackendStatus) {
@@ -76,12 +78,15 @@ client.once("ready", () => {
 });
 
 client.on("interactionCreate", async interaction => {
-    if (!interaction.isApplicationCommand()) return;
-
     const executeCommand = (dir, commandName) => {
         const commandPath = path.join(dir, commandName + ".js");
         if (fs.existsSync(commandPath)) {
-            require(commandPath).execute(interaction);
+            const command = require(commandPath);
+            if (interaction.isApplicationCommand()) {
+                command.execute(interaction);
+            } else if (interaction.isAutocomplete() && command.autocomplete) {
+                command.autocomplete(interaction);
+            }
             return true;
         }
         const subdirectories = fs.readdirSync(dir).filter(subdir => fs.lstatSync(path.join(dir, subdir)).isDirectory());
@@ -93,7 +98,9 @@ client.on("interactionCreate", async interaction => {
         return false;
     };
 
-    executeCommand(path.join(__dirname, "commands"), interaction.commandName);
+    if (interaction.isApplicationCommand() || interaction.isAutocomplete()) {
+        executeCommand(path.join(__dirname, "commands"), interaction.commandName);
+    }
 });
 
 client.on("guildBanAdd", async (ban) => {
@@ -149,19 +156,28 @@ client.on("guildBanRemove", async (ban) => {
 
 
 client.on("error", (err) => {
-    console.log("Discord API Error:", err);
+    log.error("Discord API Error:", err);
 });
   
 process.on("unhandledRejection", (reason, p) => {
-    console.log("Unhandled promise rejection:", reason, p);
+    log.error("Unhandled promise rejection:", reason, p);
 });
   
 process.on("uncaughtException", (err, origin) => {
-    console.log("Uncaught Exception:", err, origin);
+    log.error("Uncaught Exception:", err, origin);
 });
   
 process.on("uncaughtExceptionMonitor", (err, origin) => {
-    console.log("Uncaught Exception Monitor:", err, origin);
+    log.error("Uncaught Exception Monitor:", err, origin);
 });
 
-client.login(config.discord.bot_token);
+if (!config.discord.bot_token || config.discord.bot_token.trim() === "") {
+    log.error("Discord bot token is not set in config.json! Please add your bot token to enable the Discord bot.");
+    global.botConnected = false;
+} else {
+    client.login(config.discord.bot_token).catch(err => {
+        log.error("Failed to login to Discord bot. Please check your bot token in config.json");
+        log.error(`Discord login error: ${err.message}`);
+        global.botConnected = false;
+    });
+}

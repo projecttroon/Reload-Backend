@@ -37,9 +37,23 @@ if (config.bEnableHTTPS) {
 
 if (!fs.existsSync("./ClientSettings")) fs.mkdirSync("./ClientSettings");
 
-global.JWT_SECRET = functions.MakeID();
+const tui = require("./structs/tui.js");
 
-console.log('Welcome to Reload Backend\n');
+tui.init();
+
+function updateTuiStats() {
+    tui.updateStats({
+        port: PORT,
+        websitePort: WEBSITEPORT,
+        mongodb: mongoose.connection.readyState === 1 ? '{green-fg}CONNECTED{/green-fg}' : '{red-fg}DISCONNECTED{/red-fg}',
+        xmpp: true, 
+        bot: global.botConnected || false,
+        players: global.Clients ? global.Clients.length : 0
+    });
+}
+
+setInterval(updateTuiStats, 1000);
+updateTuiStats();
 
 const tokens = JSON.parse(fs.readFileSync("./tokenManager/tokens.json").toString());
 

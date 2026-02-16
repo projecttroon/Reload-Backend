@@ -28,7 +28,6 @@ module.exports = {
             const query = interaction.options.get("query")?.value;
             if (!query) return interaction.editReply({ content: "Please provide a search query.", ephemeral: true });
 
-
             let targetUser = await User.findOne({
                 $or: [
                     { username_lower: query.toLowerCase() },
@@ -36,7 +35,6 @@ module.exports = {
                     { accountId: query }
                 ]
             });
-
 
             if (!targetUser) {
                 const mentionMatch = query.match(/^<@!?(\d+)>$/);

@@ -14,7 +14,7 @@
     },
 
     "bEnableDebugLogs": true,
-    "bEnableFormattedLogs": false,
+    "bEnableFormattedLogs": true,
     "bEnableRebootUser": true,
     "bEnableCrossBans": false,
 
@@ -30,11 +30,11 @@
     },
 
     "Website": {
-      "bUseWebsite": false,
+      "bUseWebsite": true,
       "clientId": "your-client-id-here",
       "clientSecret": "your-client-secret-here",
       "redirectUri": "http://127.0.0.1:${websiteport}/oauth2/callback",
-      "websiteport": 100
+      "websiteport": 8080
     },
 
     "//": "to add more gameserver on 'gameServerIP' add ip:port:playlist",
@@ -51,21 +51,23 @@
 
     "//": "If 'bUseAutoRotate' is enabled it will automatically rotate the item shop using the time you put in 'bRotateTime', you can select the season limit with 'bSeasonLimit' (please only do up to season 10, it might be a bit broken after!), 'bRotateTime' means what time the shop rotates (it is UTC and uses the 24 hour clock, not 12 hour), for 'bItemShopWebhook' you have to generate a webhook to your item shop channel and put the link here, you can select how many cosmetics are in daily: 'bDailyItemsAmount' and featured: 'bFeaturedItemsAmount'",
     "bUseAutoRotate": true,
-    "bEnableAutoRotateDebugLogs": false,
+    "bEnableAutoRotateDebugLogs": true,
     "bEnableDiscordWebhook": false,
     "bChapterlimit": "1",
     "bSeasonlimit": "10",
-    "bRotateTime": "21:20",
+    "bRotateTime": "03:20",
     "bExcludedItems": ["CID_VIP_Athena_Commando_M_GalileoGondola_SG", "CID_636_Athena_Commando_M_GalileoGondola_78MFZ", "CID_637_Athena_Commando_M_GalileoOutrigger_7Q0YU", "CID_VIP_Athena_Commando_M_GalileoFerry_SG", "CID_VIP_Athena_Commando_F_GalileoRocket_SG", "CID_568_Athena_Commando_M_RebirthSoldier"],
-    "bItemShopChannelId": "",
+    "bItemShopChannelId": "1468342713832313035",
     "bDailyItemsAmount": 6,
     "bFeaturedItemsAmount": 2,
 
+    "//": "If 'bUseCustomShopDate' is enabled, the item shop will be filled with cosmetics that were added on the date specified in 'bCustomShopDate' (format: YYYY-MM-DD). This overrides the random auto-rotation. Set to false to use normal random rotation.",
+    "bUseCustomShopDate": false,
+    "bCustomShopDate": "",
+
     "//": "By enabling 'bEnableReports' in-game reports will work, a player will not be able to spam reports",
     "bEnableReports": false,
-    "//": "This is for reports and appeals",
-    "bReportChannelId": "", 
-
+    "bReportChannelId": "",
 
     "//": "If bCompletedSeasonalQuests is set to 'true' it will set all quests except daily quests as completed",
     "bCompletedSeasonalQuests": false,

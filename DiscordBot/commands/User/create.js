@@ -68,7 +68,6 @@ module.exports = {
 
             if (isError) return interaction.editReply({ embeds: [embed], ephemeral: true });
 
-
             let dmSent = true;
             await interaction.user.send({
                 content: `Hello ${interaction.user.username}, here are your account details for Reload Backend:`,
@@ -76,7 +75,6 @@ module.exports = {
             }).catch(() => {
                 dmSent = false;
             });
-
 
             const replyContent = dmSent
                 ? "Account created successfully! I have also sent your details to your DMs."

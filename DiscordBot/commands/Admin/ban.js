@@ -89,7 +89,6 @@ module.exports = {
 
         if (accessToken != -1 || refreshToken != -1) functions.UpdateTokens();
 
-
         let dmStatus = "";
         if (targetUser.discordId) {
             try {

@@ -9,12 +9,7 @@ const log = require("../structs/log.js");
 app.get("/*/api/statsv2/leaderboards/:leaderboardName", async (req, res) => {
     log.debug(`GET /*/api/statsv2/leaderboards/${req.params.leaderboardName} called`);
     try {
-        const playlist = req.params.leaderboardName.split("playlist_default")[1];
-        const typeStat = req.params.leaderboardName.split("_keyboardmouse")[0].split("br_")[1];
-        const stats = await UserStats.find({});
-        if (!stats) return res.status(404).end();
-        const clientsStats = [];
-        const finalStats = [];
+        let entries = [];
         let maxSize = 100;
 
         if (req.query.maxSize) {
@@ -27,34 +22,83 @@ app.get("/*/api/statsv2/leaderboards/:leaderboardName", async (req, res) => {
             }
         }
 
-        for (var stat of stats) {
-            const findUser = await User.findOne({ accountId: stat.accountId });
-            if (!findUser) continue;
+        // Check for Hype or ReloadPoints Leaderboard
+        if (req.params.leaderboardName.toLowerCase().includes("hype") || req.params.leaderboardName.toLowerCase().includes("reloadpoints")) {
+            const arenaStats = await require("../model/arena.js").find({}).sort({ hype: -1 }).limit(maxSize);
             
-            clientsStats.push({
-                displayName: findUser.username,
-                account: findUser.accountId,
-                value: stat[playlist][typeStat] || 0
-            });
-        }
+            for (const stat of arenaStats) {
+                 const findUser = await User.findOne({ accountId: stat.accountId });
+                 if (!findUser) continue;
 
-        clientsStats.sort((a, b) => b.value - a.value);
+                 entries.push({
+                     displayName: findUser.username,
+                     account: findUser.accountId,
+                     value: stat.hype
+                 });
+            }
+        } else {
+            // Standard Stats processing
+            // Attempt to parse playlist and stat type more flexibly
+            let playlist = "";
+            let typeStat = "";
+            
+            if (req.params.leaderboardName.includes("playlist_")) {
+                 playlist = req.params.leaderboardName.split("playlist_")[1]; 
+                 if (req.params.leaderboardName.includes("br_")) {
+                     const parts = req.params.leaderboardName.split("_keyboardmouse")[0].split("br_");
+                     if (parts.length > 1) typeStat = parts[1];
+                 }
+            } else {
+                 // Fallback to old behavior if possible or default
+                 playlist = req.params.leaderboardName.split("playlist_default")[1];
+                 if (req.params.leaderboardName.includes("br_")) {
+                    typeStat = req.params.leaderboardName.split("_keyboardmouse")[0].split("br_")[1];
+                 }
+            }
+            
+            if (!playlist || !typeStat) {
+                // If parsing failed or not a standard format, return empty or try default fallback
+                log.debug(`Failed to parse leaderboard: ${req.params.leaderboardName}`);
+                return res.json({ maxSize: maxSize, entries: [] });
+            }
 
-        for (var finalStat of clientsStats) {
-            if (finalStats.length >= maxSize) continue;
+            const stats = await UserStats.find({});
+            if (!stats) return res.status(404).end();
 
-            finalStats.push({
-                displayName: finalStat.displayName,
-                account: finalStat.account,
-                value: finalStat.value
-            });
+            for (var stat of stats) {
+                const findUser = await User.findOne({ accountId: stat.accountId });
+                if (!findUser) continue;
+                
+                // Flexible access or fallback
+                // If playlist specific stats don't exist, maybe fallback to 'solo' or just skip
+                let statValue = 0;
+                if (stat[playlist] && stat[playlist][typeStat] !== undefined) {
+                    statValue = stat[playlist][typeStat];
+                } else if (stat["solo"] && stat["solo"][typeStat] !== undefined) {
+                    // Fallback to solo if tournament specific key doesn't exist
+                    statValue = stat["solo"][typeStat]; 
+                }
+
+                entries.push({
+                    displayName: findUser.username,
+                    account: findUser.accountId,
+                    value: statValue
+                });
+            }
+            
+            entries.sort((a, b) => b.value - a.value);
+            // Cap to max size
+            if (entries.length > maxSize) {
+                entries = entries.slice(0, maxSize);
+            }
         }
 
         res.json({
             maxSize: maxSize,
-            entries: finalStats
+            entries: entries
         });
     } catch (err) {
+        log.error(`Leaderboard Error: ${err}`);
         res.json({
             error: "stat not found"
         });

@@ -23,7 +23,6 @@ module.exports = {
         const discordId = interaction.user.id;
         const appealReason = interaction.options.get("reason").value;
 
-
         const user = await User.findOne({ discordId: discordId });
 
         if (!user) {

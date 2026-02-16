@@ -16,7 +16,12 @@ app.get("/fortnite/api/storefront/v2/catalog", (req, res) => {
         return res.status(404).end();
     }
     
-    res.json(functions.getItemShop());
+    const shop = functions.getItemShop();
+    if (!shop) {
+        log.error("getItemShop returned undefined/null");
+        return res.status(500).json({ error: "Failed to load catalog" });
+    }
+    res.json(shop);
 });
 
 app.get("/fortnite/api/storefront/v2/gift/check_eligibility/recipient/:recipientId/offer/:offerId", verifyToken, async (req, res) => {

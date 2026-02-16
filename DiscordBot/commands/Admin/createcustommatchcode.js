@@ -13,13 +13,13 @@ module.exports = {
                 description: "The matchmaking code you want.",
                 required: true,
                 type: 3
-            },
+            }, 
             {
                 name: "ip",
                 description: "The ip of your gameserver.",
                 required: true,
                 type: 3
-            },
+            }, 
             {
                 name: "port",
                 description: "The port of your gameserver.",
@@ -69,7 +69,7 @@ module.exports = {
                 .addFields([
                     {
                         name: "Code",
-                        value: code,
+                        value: code, 
                         inline: true
                     },
                     {
@@ -84,6 +84,7 @@ module.exports = {
                     }
                 ])
                 .setTimestamp()
+                .setThumbnail("https://i.imgur.com/2RImwlb.png")
                 .setFooter({
                     text: "Reload Backend",
                     iconURL: "https://i.imgur.com/2RImwlb.png"

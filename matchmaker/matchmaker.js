@@ -21,7 +21,6 @@ module.exports = async (ws) => {
     queue.push(player);
     log.debug(`Player joined matchmaking queue. Total: ${queue.length}`);
 
-
     if (queue.length === 1) {
         countdown = 60;
     } else {

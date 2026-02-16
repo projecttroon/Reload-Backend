@@ -1,5 +1,6 @@
 const fs = require("fs");
 const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
+const tui = require("./tui.js");
 
 function getTimestamp() {
     const now = new Date();
@@ -12,7 +13,7 @@ function getTimestamp() {
 function formatLog(prefixColor, prefix, ...args) {
     let msg = args.join(" ");
     let formattedMessage = `${prefixColor}[${getTimestamp()}] ${prefix}\x1b[0m: ${msg}`;
-    console.log(formattedMessage);
+    tui.addLog(formattedMessage);
 }
 
 function backend(...args) {
@@ -20,7 +21,7 @@ function backend(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[32m", "Reload Backend Log", ...args);
     } else {
-        console.log(`\x1b[32mReload Backend Log\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[32mReload Backend Log\x1b[0m: ${msg}`);
     }
 }
 
@@ -29,7 +30,7 @@ function bot(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[33m", "Reload Bot Log", ...args);
     } else {
-        console.log(`\x1b[33mReload Bot Log\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[33mReload Bot Log\x1b[0m: ${msg}`);
     }
 }
 
@@ -38,7 +39,7 @@ function xmpp(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[34m", "Reload Xmpp Log", ...args);
     } else {
-        console.log(`\x1b[34mReload Xmpp Log\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[34mReload Xmpp Log\x1b[0m: ${msg}`);
     }
 }
 
@@ -47,7 +48,7 @@ function error(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[31m", "Reload Error Log", ...args);
     } else {
-        console.log(`\x1b[31mReload Error Log\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[31mReload Error Log\x1b[0m: ${msg}`);
     }
 }
 
@@ -57,7 +58,7 @@ function debug(...args) {
         if (config.bEnableFormattedLogs) {
             formatLog("\x1b[35m", "Reload Debug Log", ...args);
         } else {
-            console.log(`\x1b[35mReload Debug Log\x1b[0m: ${msg}`);
+            tui.addLog(`\x1b[35mReload Debug Log\x1b[0m: ${msg}`);
         }
     }
 }
@@ -67,7 +68,7 @@ function website(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[36m", "Reload Website Log", ...args);
     } else {
-        console.log(`\x1b[36mReload Website Log\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[36mReload Website Log\x1b[0m: ${msg}`);
     }
 }
 
@@ -77,7 +78,7 @@ function AutoRotation(...args) {
         if (config.bEnableFormattedLogs) {
             formatLog("\x1b[36m", "Reload AutoRotation Debug Log", ...args);
         } else {
-            console.log(`\x1b[36mReload AutoRotation Debug Log\x1b[0m: ${msg}`);
+            tui.addLog(`\x1b[36mReload AutoRotation Debug Log\x1b[0m: ${msg}`);
         }
     }
 }
@@ -87,7 +88,7 @@ function checkforupdate(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[33m", "Reload Update Log", ...args);
     } else {
-        console.log(`\x1b[33mReload Update Log\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[33mReload Update Log\x1b[0m: ${msg}`);
     }
 }
 
@@ -96,7 +97,7 @@ function autobackendrestart(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[92m", "Reload Auto Backend Restart Log", ...args);
     } else {
-        console.log(`\x1b[92mReload Auto Backend Restart\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[92mReload Auto Backend Restart\x1b[0m: ${msg}`);
     }
 }
 
@@ -105,7 +106,7 @@ function calderaservice(...args) {
     if (config.bEnableFormattedLogs) {
         formatLog("\x1b[91m", "Caldera Service Log", ...args);
     } else {
-        console.log(`\x1b[91mCaldera Service\x1b[0m: ${msg}`);
+        tui.addLog(`\x1b[91mCaldera Service\x1b[0m: ${msg}`);
     }
 }
 

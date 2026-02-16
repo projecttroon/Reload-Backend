@@ -185,7 +185,7 @@ app.post("/fortnite/api/game/v2/events/v2/setSubgroup/*", (req, res) => {
 
 app.get("/fortnite/api/game/v2/enabled_features", (req, res) => {
     log.debug("GET /fortnite/api/game/v2/enabled_features called");
-    res.json([]);
+    res.json(["LiveEvents", "BattleRoyale", "Creative", "SaveTheWorld"]);
 });
 
 app.get("/api/v1/events/Fortnite/download/*", async (req, res) => {
@@ -214,6 +214,17 @@ app.get("/api/v1/events/Fortnite/download/*", async (req, res) => {
         console.error("Error fetching Arena data:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
+});
+
+app.get("/api/v1/events/Fortnite/:eventId/history/:accountId", (req, res) => {
+    log.debug(`GET /api/v1/events/Fortnite/${req.params.eventId}/history/${req.params.accountId} called`);
+    res.json({
+        "events": [],
+        "paging": {
+            "count": 0,
+            "total": 0
+        }
+    });
 });
 
 app.get("/fortnite/api/game/v2/twitch/*", (req, res) => {
@@ -393,7 +404,6 @@ app.post("/datarouter/api/v1/public/data", async (req, res) => {
         res.status(204).end();
     } catch (error) {
         log.error("Error processing data:", error);
-        console.log("Error processing data:", error);
         res.status(500).send("Internal Server Error");
     }
 });

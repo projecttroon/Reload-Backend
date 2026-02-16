@@ -1,7 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-const config = require('../Config/config.json');
 const log = require("./log.js");
 const { generateShopImage } = require('./shopImageGenerator.js');
 const { MessageEmbed, MessageAttachment } = require("discord.js");
@@ -9,16 +8,26 @@ const { MessageEmbed, MessageAttachment } = require("discord.js");
 const fortniteapi = "https://fortnite-api.com/v2/cosmetics/br";
 const catalogcfg = path.join(__dirname, "..", 'Config', 'catalog_config.json');
 
-const chapterlimit = config.bChapterlimit; 
-const seasonlimit = config.bSeasonlimit; 
-const dailyItemsCount = config.bDailyItemsAmount;
-const featuredItemsCount = config.bFeaturedItemsAmount;
+const getConfig = () => {
+    try {
+        return JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'Config', 'config.json')).toString());
+    } catch (err) {
+        log.error("Failed to read config.json in autorotate.js");
+        return {};
+    }
+};
+
+const getChapterLimit = () => getConfig().bChapterlimit || "1";
+const getSeasonLimit = () => getConfig().bSeasonlimit || "10";
+const getDailyItemsAmount = () => getConfig().bDailyItemsAmount || 6;
+const getFeaturedItemsAmount = () => getConfig().bFeaturedItemsAmount || 2;
 
 async function fetchitems() {
     try {
+        const cfg = getConfig();
         const response = await axios.get(fortniteapi);
         const cosmetics = response.data.data || [];
-        const excludedItems = config.bExcludedItems || [];
+        const excludedItems = cfg.bExcludedItems || [];
 
         return cosmetics.filter(item => {
             const { id, introduction, rarity } = item;
@@ -29,8 +38,8 @@ async function fetchitems() {
             if (!chapter || !season) return false;
             if (excludedItems.includes(id)) return false;
 
-            const maxChapter = parseInt(chapterlimit, 10);
-            const maxSeason = seasonlimit.toString();
+            const maxChapter = parseInt(getChapterLimit(), 10);
+            const maxSeason = getSeasonLimit().toString();
 
             if (maxSeason === "OG") {
                 return chapter >= 1 && chapter <= maxChapter && itemRarity !== "common";
@@ -47,6 +56,37 @@ async function fetchitems() {
         });
     } catch (error) {
         log.error('Error fetching cosmetics:', error.message || error);
+        return [];
+    }
+}
+
+async function fetchItemsByDate(dateStr) {
+    try {
+        const cfg = getConfig();
+        const response = await axios.get(fortniteapi);
+        const cosmetics = response.data.data || [];
+        const excludedItems = cfg.bExcludedItems || [];
+        const targetDate = dateStr.trim();
+
+        const filtered = cosmetics.filter(item => {
+            const { id, rarity, added } = item;
+            if (!added) return false;
+
+            const itemDate = added.substring(0, 10);
+            if (itemDate !== targetDate) return false;
+
+            if (excludedItems.includes(id)) return false;
+
+            const itemRarity = rarity?.displayValue?.toLowerCase();
+            if (itemRarity === "common") return false;
+
+            return true;
+        });
+
+        log.AutoRotation(`Found ${filtered.length} cosmetics added on ${targetDate}`);
+        return filtered;
+    } catch (error) {
+        log.error('Error fetching cosmetics by date:', error.message || error);
         return [];
     }
 }
@@ -284,12 +324,12 @@ function updatecfgomg(dailyItems, featuredItems) {
 }
 
 async function discordpost(itemShop) {
-    
-    if (config.discord.bUseDiscordBot !== true || !config.bItemShopChannelId) return;
+    const cfg = getConfig();
+    if (cfg.discord.bUseDiscordBot !== true || !cfg.bItemShopChannelId) return;
 
     function getNextRotationTime() {
         const now = new Date();
-        const [localHour, localMinute] = config.bRotateTime.split(':').map(Number);
+        const [localHour, localMinute] = (cfg.bRotateTime || "00:00").split(':').map(Number);
         const nextRotation = new Date(now);
         nextRotation.setHours(localHour, localMinute, 0, 0);
         if (now >= nextRotation) {
@@ -316,8 +356,8 @@ async function discordpost(itemShop) {
         });
 
         if (global.discordClient) {
-            const channel = await global.discordClient.channels.cache.get(config.bItemShopChannelId) ||
-                await global.discordClient.channels.fetch(config.bItemShopChannelId).catch(() => null);
+            const channel = await global.discordClient.channels.cache.get(cfg.bItemShopChannelId) ||
+                await global.discordClient.channels.fetch(cfg.bItemShopChannelId).catch(() => null);
 
             if (channel) {
                 const attachment = new MessageAttachment(imageBuffer, 'shop.png');
@@ -333,7 +373,7 @@ async function discordpost(itemShop) {
                 await channel.send({ embeds: [embed], files: [attachment] });
                 log.AutoRotation(`Item shop posted successfully via Discord Bot.`);
             } else {
-                log.error(`Could not find Discord channel with ID: ${config.bItemShopChannelId}`);
+                log.error(`Could not find Discord channel with ID: ${cfg.bItemShopChannelId}`);
             }
         }
     } catch (error) {
@@ -343,14 +383,39 @@ async function discordpost(itemShop) {
 
 async function rotateshop() {
     try {
-        const cosmetics = await fetchitems();
-        if (cosmetics.length === 0) {
-            log.error('No cosmetics found?');
-            return;
-        }
+        const cfg = getConfig();
+        let dailyItems, featuredItems;
 
-        const dailyItems = pickRandomItems(cosmetics, dailyItemsCount);
-        const featuredItems = pickRandomItems(cosmetics, featuredItemsCount);
+        if (cfg.bUseCustomShopDate && cfg.bCustomShopDate) {
+            log.AutoRotation(`Custom shop date enabled, fetching cosmetics from: ${cfg.bCustomShopDate}`);
+            const dateItems = await fetchItemsByDate(cfg.bCustomShopDate);
+
+            if (dateItems.length === 0) {
+                log.error(`No cosmetics found for date: ${cfg.bCustomShopDate}, falling back to random rotation`);
+                const cosmetics = await fetchitems();
+                if (cosmetics.length === 0) {
+                    log.error('No cosmetics found?');
+                    return;
+                }
+                dailyItems = pickRandomItems(cosmetics, getDailyItemsAmount());
+                featuredItems = pickRandomItems(cosmetics, getFeaturedItemsAmount());
+            } else {
+                const shuffled = dateItems.sort(() => 0.5 - Math.random());
+                featuredItems = shuffled.slice(0, Math.min(getFeaturedItemsAmount(), shuffled.length));
+                const remaining = shuffled.slice(featuredItems.length);
+                dailyItems = remaining.slice(0, Math.min(getDailyItemsAmount(), remaining.length));
+
+                log.AutoRotation(`Custom date shop: ${featuredItems.length} featured, ${dailyItems.length} daily items from ${cfg.bCustomShopDate}`);
+            }
+        } else {
+            const cosmetics = await fetchitems();
+            if (cosmetics.length === 0) {
+                log.error('No cosmetics found?');
+                return;
+            }
+            dailyItems = pickRandomItems(cosmetics, getDailyItemsAmount());
+            featuredItems = pickRandomItems(cosmetics, getFeaturedItemsAmount());
+        }
 
         updatecfgomg(dailyItems, featuredItems);
         await discordpost({ daily: dailyItems, featured: featuredItems });
@@ -365,18 +430,10 @@ async function rotateshop() {
     }
 }
 
-function getUTCTimeFromLocal(hour, minute) {
-    const now = new Date();
-    const localTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0);
-    const utcDate = new Date(localTime.toLocaleString('en-US', { timeZone: 'UTC' }));
-    
-    const nextRotation = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0);
-    return nextRotation;
-}
-
 function milisecstillnextrotation() {
+    const cfg = getConfig();
     const now = new Date();
-    const [localHour, localMinute] = config.bRotateTime.toString().split(':').map(Number);
+    const [localHour, localMinute] = (cfg.bRotateTime || "00:00").toString().split(':').map(Number);
     let nextRotation = new Date(now.getFullYear(), now.getMonth(), now.getDate(), localHour, localMinute, 0);
 
     if (now.getTime() >= nextRotation.getTime()) {
@@ -391,4 +448,13 @@ function milisecstillnextrotation() {
     return millisUntilNextRotation;
 }
 
-setTimeout(rotateshop, milisecstillnextrotation());
+(async () => {
+    const cfg = getConfig();
+    if (cfg.bUseCustomShopDate === true) {
+        log.AutoRotation("Custom shop date IS ENABLED! Running initial rotation...");
+        await rotateshop();
+    } else {
+        log.AutoRotation(`Auto rotation scheduled in ${Math.round(milisecstillnextrotation() / 1000 / 60)} minutes.`);
+        setTimeout(rotateshop, milisecstillnextrotation());
+    }
+})();

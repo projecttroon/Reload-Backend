@@ -4,7 +4,6 @@ const Profile = require("./../model/profiles.js")
 
 const { verifyToken } = require("../tokenManager/tokenVerify.js");
 
-
 app.get("/fortnite/api/game/v2/privacy/account/:accountId", verifyToken , async (req, res) => {
     const profiles = await Profile.findOne({ accountId: req.user.accountId });
 
