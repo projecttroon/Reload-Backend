@@ -11,7 +11,7 @@ If you have any suggestions or encounter any problems, DM me on Discord: **dripb
 
 ## All Features Added
 - Fixed the issue where skin styles (like Superhero skins) weren't saving.
-- Bot now sends an image of the item shop every 24H.
+- Bot now sends an image of the item shop every new shop.
 - `/add`: Add V-Bucks/item/all + OG Pack in one place.
 - `/remove`: Remove all/items in one place.
 - Settings now save even if you change season.
