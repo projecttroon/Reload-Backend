@@ -1,12 +1,6 @@
 ⭐ Pls leave a star, it helps a lot <3  
 If you have any suggestions or encounter any problems, DM me on Discord: **dripbenzi**
 
-## About Skids
-You are only allowed to change things inside the config.  
-If you modify anything else, your backend will most likely crash.  
-
-Should I fix it? 🤔
-
 ## Latest Changes
 - Fixed `/add` and `/remove` commands breaking lockers.
 - Added autocomplete to `/buy`: You can now type the name of an item and get a dropdown list of matching items from the current shop, making purchases much easier.
