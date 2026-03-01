@@ -10,7 +10,7 @@
       "message": {
         "_type": "CommonUI Simple Message Base",
         "title": "Reload Backend",
-        "body": "Created by Burlone, This is a modded backend, all main backend credits to lawin"
+        "body": "Reload Modified Beckend Version"
       }
     },
     "_activeDate": "2017-07-19T13:14:04.490Z",
@@ -214,7 +214,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "DISCORD!",
           "title": "Reload Backend",
-          "body": "Made by burlone413",
+          "body": "Reload Modified Beckend Version",
           "spotlight": false
         },
         {
@@ -223,7 +223,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
           "title": "Reload Backend",
-          "body": "Created by Burlone, This is a modded backend, all main backend credits to lawin",
+          "body": "Reload Modified Beckend Version",
           "spotlight": false
         }
       ]
@@ -6263,7 +6263,7 @@
           "tabTitleOverride": "Reload Backend",
           "_type": "CommonUI Simple Message MOTD",
           "title": "Welcome to Reload!",
-          "body": "Created by Burlone, This is a modded backend, all main backend credits to lawin",
+          "body": "Reload Modified Beckend Version",
           "offerAction": "ShowOfferDetails",
           "videoLoop": false,
           "videoStreamingEnabled": false,
@@ -6299,7 +6299,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "Reload Backend",
           "title": "Reload Backend",
-          "body": "Created by Burlone, This is a modded backend, all main backend credits to lawin",
+          "body": "Reload Modified Beckend Version",
           "spotlight": false
         }
       ]
@@ -6375,7 +6375,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
           "title": "Reload Backend",
-          "body": "Created by Burlone, This is a modded backend, all main backend credits to lawin!",
+          "body": "Reload Modified Beckend Version",
           "spotlight": false
         }
       ]
