@@ -13,7 +13,7 @@
         "EnableGlobalChat": false
     },
 
-    "bEnableDebugLogs": false,
+    "bEnableDebugLogs": true,
     "bEnableFormattedLogs": false,
     "bEnableRebootUser": true,
     "bEnableCrossBans": false,
@@ -39,7 +39,7 @@
 
     "//": "to add more gameserver on 'gameServerIP' add ip:port:playlist",
     "matchmakerIP": "127.0.0.1:80",
-    "gameServerIP": ["127.0.0.1:7777:playlist_defaultsolo"],
+    "gameServerIP": ["127.0.0.1:7777:playlist_defaultsolo"], radmin vpn Ip Here
     
     "//": "For 'BattlePassSeason' enter only the number of your season (from 2 to 20)",
     "bEnableBattlepass": false,
@@ -77,7 +77,7 @@
     "bRestartTime": "",
 
     "//": "If active it will send a message in the channel when the backend goes online",
-    "bEnableBackendStatus": false,
+    "bEnableBackendStatus": false, 
     "bBackendStatusChannelId": "",
 
     "//": "Use HTTPS (For VPS Side Only, Or If You Were To Setup  A Type Record To Your Own Public Adress From Your Domain) (You Also Need To Change The Examples In SSl Folder!)",
