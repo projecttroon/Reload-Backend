@@ -19,7 +19,7 @@ module.exports = async (ws) => {
     function Connecting() {
         ws.send(JSON.stringify({
             "payload": {
-                "state": "Connecting"
+                "state": "Connecting Servers"
             },
             "name": "StatusUpdate"
         }));
