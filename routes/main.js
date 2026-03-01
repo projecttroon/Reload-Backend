@@ -4,10 +4,12 @@ const fs = require("fs");
 const app = express.Router();
 const log = require("../structs/log.js");
 const path = require("path");
-
+const { getAccountIdData, addEliminationHypePoints, addVictoryHypePoints, deductBusFareHypePoints } = require("./../structs/functions.js");
 const { verifyToken, verifyClient } = require("../tokenManager/tokenVerify.js");
-
+const User = require("../model/user.js");
+const Arena = require("../model/arena.js");
 const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
+
 
 app.post("/fortnite/api/game/v2/chat/*/*/*/pc", (req, res) => {
     log.debug("POST /fortnite/api/game/v2/chat/*/*/*/pc called");
@@ -183,12 +185,46 @@ app.post("/fortnite/api/game/v2/events/v2/setSubgroup/*", (req, res) => {
 
 app.get("/fortnite/api/game/v2/enabled_features", (req, res) => {
     log.debug("GET /fortnite/api/game/v2/enabled_features called");
-    res.json([]);
+    res.json(["LiveEvents", "BattleRoyale", "Creative", "SaveTheWorld"]);
 });
 
-app.get("/api/v1/events/Fortnite/download/*", (req, res) => {
-    log.debug("GET /api/v1/events/Fortnite/download/* called");
-    res.json({});
+app.get("/api/v1/events/Fortnite/download/*", async (req, res) => {
+    const accountId = req.params.account_id;
+
+    try {
+        const playerData = await Arena.findOne({ accountId });
+        const hypePoints = playerData ? playerData.hype : 0;
+        const division = playerData ? playerData.division : 0;
+
+        const eventsDataPath = path.join(__dirname, "./../responses/eventlistactive.json");
+        const events = JSON.parse(fs.readFileSync(eventsDataPath, 'utf-8'));
+
+        events.player = {
+            accountId: accountId,
+            gameId: "Fortnite",
+            persistentScores: {
+                Hype: hypePoints
+            },
+            tokens: [`ARENA_S24_Division${division + 1}`]
+        };
+
+        res.json(events);
+
+    } catch (error) {
+        console.error("Error fetching Arena data:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+app.get("/api/v1/events/Fortnite/:eventId/history/:accountId", (req, res) => {
+    log.debug(`GET /api/v1/events/Fortnite/${req.params.eventId}/history/${req.params.accountId} called`);
+    res.json({
+        "events": [],
+        "paging": {
+            "count": 0,
+            "total": 0
+        }
+    });
 });
 
 app.get("/fortnite/api/game/v2/twitch/*", (req, res) => {
@@ -220,12 +256,6 @@ app.get("/fortnite/api/receipts/v1/account/*/receipts", (req, res) => {
 app.get("/fortnite/api/game/v2/leaderboards/cohort/*", (req, res) => {
     log.debug("GET /fortnite/api/game/v2/leaderboards/cohort/* called");
     res.json([]);
-});
-
-app.post("/datarouter/api/v1/public/data", (req, res) => {
-    log.debug("POST /datarouter/api/v1/public/data called");
-    res.status(204);
-    res.end();
 });
 
 app.post("/api/v1/assets/Fortnite/*/*", async (req, res) => {
@@ -319,5 +349,63 @@ app.get("/fortnite/api/game/v2/br-inventory/account/*", async (req, res) => {
         }
     })
 })
+
+app.post("/datarouter/api/v1/public/data", async (req, res) => {
+    try {
+        const accountId = getAccountIdData(req.query.UserID);
+        const data = req.body.Events;
+
+        if (Array.isArray(data) && data.length > 0) {
+            const findUser = await User.findOne({accountId});
+
+            if (findUser) {
+                for (const event of data) {
+                    const { EventName, ProviderType, PlayerKilledPlayerEventCount } = event;
+
+                    if (EventName && ProviderType === "Client") {
+                        const playerKills = Number(PlayerKilledPlayerEventCount) || 0;
+
+                        switch (EventName) {
+                            case "Athena.ClientWonMatch": 
+
+                                await addVictoryHypePoints(findUser);
+
+                               
+
+
+                                break;
+                            case "Combat.AthenaClientEngagement": 
+
+                                for (let i = 0; i < playerKills; i++) {
+                                    await addEliminationHypePoints(findUser);
+                                  
+                                }
+
+                                break;
+
+                            case "Combat.ClientPlayerDeath": 
+
+                                await deductBusFareHypePoints(findUser);
+
+                               
+
+                                break;
+                            default:
+                                log.debug(`Event List: ${EventName}`); 
+                                break;
+                        }
+                    }
+                }
+            } else {
+                
+            }
+        }
+
+        res.status(204).end();
+    } catch (error) {
+        log.error("Error processing data:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 module.exports = app;
