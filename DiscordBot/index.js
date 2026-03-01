@@ -38,7 +38,7 @@ client.once("ready", () => {
     if (config.discord.bEnableInGamePlayerCount) {
         function updateBotStatus() {
             if (global.Clients && Array.isArray(global.Clients)) {
-                client.user.setActivity(`${global.Clients.length} player(s)`, { type: "WATCHING" });
+                client.user.setActivity(`${global.Clients.length} `Player Online`, { type: "WATCHING" });
             }
         }
 
