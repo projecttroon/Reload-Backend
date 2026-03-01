@@ -7,7 +7,6 @@ echo Installing Required Programs...
 echo 
 echo.
 
-:: Create temporary folder
 mkdir C:\TempInstallers
 cd C:\TempInstallers
 
