@@ -2,9 +2,9 @@
 title Automatic Installer
 color 0A
 
-echo ================================
+echo
 echo Installing Required Programs...
-echo ================================
+echo 
 echo.
 
 :: Create temporary folder
@@ -23,6 +23,9 @@ powershell -Command "Invoke-WebRequest https://fastdl.mongodb.org/windows/mongod
 echo Downloading Visual Studio Code...
 powershell -Command "Invoke-WebRequest https://update.code.visualstudio.com/latest/win32-x64-user/stable -OutFile vscode.exe"
 
+echo Downloading Reboot Launcher...
+powershell -Command "Invoke-WebRequest https://github.com/Auties00/Reboot-Launcher/releases/download/10.0.9/reboot_launcher-10.0.9-windows-setup.exe -OutFile reboot.exe"
+
 echo.
 echo Installing Radmin VPN...
 start /wait radmin.exe /S
@@ -36,8 +39,11 @@ msiexec /i mongodb.msi /quiet
 echo Installing Visual Studio Code...
 start /wait vscode.exe /silent
 
+echo Installing Reboot Launcher...
+start /wait reboot.exe /S
+
 echo.
-echo ================================
+echo 
 echo Installation Finished!
-echo ================================
+echo 
 pause
