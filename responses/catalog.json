@@ -319,11 +319,11 @@
             {
               "currencyType": "GameItem",
               "currencySubType": "AccountResource:eventcurrency_scaling",
-              "regularPrice": 2800,
-              "dynamicRegularPrice": 2800,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "dynamicRegularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "meta": {},
@@ -396,11 +396,11 @@
             {
               "currencyType": "GameItem",
               "currencySubType": "AccountResource:eventcurrency_scaling",
-              "regularPrice": 2800,
-              "dynamicRegularPrice": 2800,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "dynamicRegularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "meta": {},
@@ -1079,11 +1079,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 1800,
-              "finalPrice": 950,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -1237,11 +1237,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -1333,10 +1333,10 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
-              "finalPrice": 950,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -1506,11 +1506,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -1602,10 +1602,10 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
-              "finalPrice": 950,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -2313,11 +2313,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -2409,10 +2409,10 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
-              "finalPrice": 950,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -2582,11 +2582,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -2751,10 +2751,10 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
-              "finalPrice": 950,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -2851,11 +2851,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
-              "finalPrice": 2800,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -2947,10 +2947,10 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
-              "finalPrice": 950,
+              "regularPrice": 0,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -3120,11 +3120,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -3222,12 +3222,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 2800,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -3410,11 +3410,11 @@
         {
           "currencyType": "MtxCurrency",
           "currencySubType": "",
-          "regularPrice": 950,
+          "regularPrice": 0,
           "dynamicRegularPrice": -1,
-          "finalPrice": 950,
+          "finalPrice": 0,
           "saleExpiration": "9999-12-31T23:59:59.999Z",
-          "basePrice": 950
+          "basePrice": 0
         }
       ],
       "categories": [],
@@ -3441,7 +3441,7 @@
       "sortPriority": 1,
       "title": "Battle Pass",
       "shortDescription": "Chapter 2 - Season 1",
-      "description": "Reload Backend Made by burlone413",
+      "description": "Reload Modified Beckend Version",
       "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season11_BattlePass.DA_BR_Season11_Rare",
       "itemGrants": []
     },
@@ -3490,12 +3490,12 @@
         {
           "currencyType": "MtxCurrency",
           "currencySubType": "",
-          "regularPrice": 4700,
+          "regularPrice": 0,
           "dynamicRegularPrice": -1,
-          "finalPrice": 2800,
+          "finalPrice": 0,
           "saleType": "PercentOff",
           "saleExpiration": "9999-12-31T23:59:59.999Z",
-          "basePrice": 2800
+          "basePrice": 0
         }
       ],
       "categories": [],
@@ -3527,7 +3527,7 @@
       "sortPriority": 0,
       "title": "Battle Bundle",
       "shortDescription": "Battle Pass + 25 levels!",
-      "description": "Reload Backend Made by burlone413",
+      "description": "Reload Modified Beckend Version",
       "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season11_BattlePassWithLevels.DA_BR_Season11_BattlePassWithLevels",
       "itemGrants": []
 
@@ -3545,11 +3545,11 @@
         {
           "currencyType": "MtxCurrency",
           "currencySubType": "",
-          "regularPrice": 950,
+          "regularPrice": 0,
           "dynamicRegularPrice": -1,
-          "finalPrice": 950,
+          "finalPrice": 0,
           "saleExpiration": "9999-12-31T23:59:59.999Z",
-          "basePrice": 950
+          "basePrice": 0
         }
       ],
       "categories": [],
@@ -3576,7 +3576,7 @@
       "sortPriority": 1,
       "title": "Battle Pass",
       "shortDescription": "Chapter 2 - Season 2",
-      "description": "Reload Backend Made by burlone413",
+      "description": "Reload Modified Beckend Version",
       "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season12_BattlePass.DA_BR_Season12_Rare",
       "itemGrants": []
     },
@@ -3625,12 +3625,12 @@
         {
           "currencyType": "MtxCurrency",
           "currencySubType": "",
-          "regularPrice": 4700,
+          "regularPrice": 0,
           "dynamicRegularPrice": -1,
-          "finalPrice": 2800,
+          "finalPrice": 0,
           "saleType": "PercentOff",
           "saleExpiration": "9999-12-31T23:59:59.999Z",
-          "basePrice": 2800
+          "basePrice": 0
         }
       ],
       "categories": [],
@@ -3662,7 +3662,7 @@
       "sortPriority": 0,
       "title": "Battle Bundle",
       "shortDescription": "Battle Pass + 25 levels!",
-      "description": "Reload Backend Made by burlone413",
+      "description": "Reload Modified Beckend Version",
       "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season12_BattlePassWithLevels.DA_BR_Season12_BattlePassWithLevels",
       "itemGrants": []
        }
@@ -3679,11 +3679,11 @@
         {
           "currencyType": "MtxCurrency",
           "currencySubType": "",
-          "regularPrice": 950,
+          "regularPrice": 0,
           "dynamicRegularPrice": -1,
-          "finalPrice": 950,
+          "finalPrice": 0,
           "saleExpiration": "9999-12-31T23:59:59.999Z",
-          "basePrice": 950
+          "basePrice": 0
         }
       ],
       "categories": [],
@@ -3710,7 +3710,7 @@
       "sortPriority": 1,
       "title": "Battle Pass",
       "shortDescription": "Chapter 2 - Season 3",
-      "description": "Reload Backend Made by burlone413",
+      "description": "Reload Modified Beckend Version",
       "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season13_BattlePass.DA_BR_Season13_Rare",
       "itemGrants": []
     },
@@ -3759,12 +3759,12 @@
         {
           "currencyType": "MtxCurrency",
           "currencySubType": "",
-          "regularPrice": 4700,
+          "regularPrice": 0,
           "dynamicRegularPrice": -1,
-          "finalPrice": 2800,
+          "finalPrice": 0,
           "saleType": "PercentOff",
           "saleExpiration": "9999-12-31T23:59:59.999Z",
-          "basePrice": 2800
+          "basePrice": 0
         }
       ],
       "categories": [],
@@ -3796,7 +3796,7 @@
       "sortPriority": 0,
       "title": "Battle Bundle",
       "shortDescription": "Battle Pass + 25 levels!",
-      "description": "Reload Backend Made by burlone413",
+      "description": "Reload Modified Beckend Version",
       "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season13_BattlePassWithLevels.DA_BR_Season13_BattlePassWithLevels",
       "itemGrants": []
        }
@@ -3813,11 +3813,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -3850,7 +3850,7 @@
           "sortPriority": 1,
           "title": "Battle Pass",
           "shortDescription": "Chapter 2 - Season 4",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season14_BattlePass.DA_BR_Season14_BattlePass",
           "itemGrants": []
         },
@@ -3899,12 +3899,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 2800,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -3936,7 +3936,7 @@
           "sortPriority": 0,
           "title": "Battle Bundle",
           "shortDescription": "Battle Pass + 25 levels!",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season14_BattlePassWithLevels.DA_BR_Season14_BattlePassWithLevels",
           "itemGrants": []
            }
@@ -3953,11 +3953,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4039,12 +4039,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 2800,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4076,7 +4076,7 @@
           "sortPriority": 0,
           "title": "Battle Bundle",
           "shortDescription": "Battle Pass + 25 levels!",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season15_BattlePassWithLevels.DA_BR_Season15_BattlePassWithLevels",
           "itemGrants": []
            }
@@ -4093,11 +4093,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4124,7 +4124,7 @@
           "sortPriority": 1,
           "title": "Battle Pass",
           "shortDescription": "Chapter 2 - Season 6",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season16_BattlePass.DA_BR_Season16_BattlePass",
           "itemGrants": []
         },
@@ -4173,12 +4173,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 2800,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4227,11 +4227,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4258,7 +4258,7 @@
           "sortPriority": 1,
           "title": "Battle Pass",
           "shortDescription": "Chapter 2 - Season 6",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season16_BattlePass.DA_BR_Season16_BattlePass",
           "itemGrants": []
         },
@@ -4307,12 +4307,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 2800,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4361,11 +4361,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4392,7 +4392,7 @@
           "sortPriority": 1,
           "title": "Battle Pass",
           "shortDescription": "Chapter 3 - Season 1",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season19_BattlePass.DA_BR_Season19_BattlePass",
           "itemGrants": []
         },
@@ -4441,12 +4441,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 2800,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4495,11 +4495,11 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 950,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 950,
+              "finalPrice": 0,
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 950
+              "basePrice": 0
             }
           ],
           "categories": [],
@@ -4526,7 +4526,7 @@
           "sortPriority": 1,
           "title": "Battle Pass",
           "shortDescription": "Chapter 3 - Season 2",
-          "description": "Reload Backend Made by burlone413",
+          "description": "Reload Modified Beckend Version",
           "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season20_BattlePass.DA_BR_Season20_BattlePass",
           "itemGrants": []
         },
@@ -4575,12 +4575,12 @@
             {
               "currencyType": "MtxCurrency",
               "currencySubType": "",
-              "regularPrice": 4700,
+              "regularPrice": 0,
               "dynamicRegularPrice": -1,
-              "finalPrice": 2800,
+              "finalPrice": 0,
               "saleType": "PercentOff",
               "saleExpiration": "9999-12-31T23:59:59.999Z",
-              "basePrice": 2800
+              "basePrice": 0
             }
           ],
           "categories": [],
