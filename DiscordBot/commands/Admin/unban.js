@@ -30,6 +30,6 @@ module.exports = {
 
         await targetUser.updateOne({ $set: { banned: false } });
         
-        interaction.editReply({ content: `Successfully unbanned ${targetUser.username}`, ephemeral: true });
+        interaction.editReply({ content: `Successfully unbanned Reload ${targetUser.username}`, ephemeral: true });
     }
 }
