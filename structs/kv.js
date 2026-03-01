@@ -1,7 +1,7 @@
 const Redis = require('ioredis');
 const Keyv = require('keyv');
 
-//Don't touch "Use_Redis"
+
 const Use_Redis = false;
 const memkv = new Keyv();
 const redis = Use_Redis ? new Redis() : null;
