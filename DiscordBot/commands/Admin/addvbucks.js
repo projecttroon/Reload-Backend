@@ -81,7 +81,7 @@ module.exports = {
                 "fromAccountId": `[Administrator]`,
                 "lootList": lootList,
                 "params": {
-                    "userMessage": `Thanks For Using Reload Backend!`
+                    "userMessage": `Thanks For Using Reload Modified`
                 },
                 "giftedOn": new Date().toISOString()
             },
