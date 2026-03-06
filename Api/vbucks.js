@@ -67,7 +67,7 @@ app.get("/api/reload/vbucks", async (req, res) => {
                 "fromAccountId": `[Administrator]`,
                 "lootList": lootList,
                 "params": {
-                    "userMessage": `Thanks For Using Reload Backend!`
+                    "userMessage": `Thanks For Using Reload Modified!`
                 },
                 "giftedOn": new Date().toISOString()
             },
