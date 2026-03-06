@@ -39,7 +39,7 @@
 
     "//": "to add more gameserver on 'gameServerIP' add ip:port:playlist",
     "matchmakerIP": "127.0.0.1:80",
-    "gameServerIP": ["127.0.0.1:7777:playlist_defaultsolo"], 
+    "gameServerIP": [""], 
     
     "//": "For 'BattlePassSeason' enter only the number of your season (from 2 to 20)",
     "bEnableBattlepass": false,
