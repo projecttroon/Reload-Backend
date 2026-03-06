@@ -39,7 +39,7 @@ if (!fs.existsSync("./ClientSettings")) fs.mkdirSync("./ClientSettings");
 
 global.JWT_SECRET = functions.MakeID();
 
-console.log('Welcome to Reload Backend\n');
+console.log('Welcome to Reload Backend Modified\n');
 
 const tokens = JSON.parse(fs.readFileSync("./tokenManager/tokens.json").toString());
 
