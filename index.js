@@ -8,6 +8,7 @@ const kv = require("./structs/kv.js");
 const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
 const WebSocket = require('ws');
 const https = require("https");
+require("dotenv").config();
 
 const log = require("./structs/log.js");
 const error = require("./structs/error.js");
@@ -279,5 +280,12 @@ function DateAddHours(pdate, number) {
 
     return date;
 }
+
+
+let config = JSON.parse(fs.readFileSync("config.json", "utf8"));
+
+config.gameServerIP = [process.env.GAME_SERVER_IP];
+
+console.log(config);
 
 module.exports = app;
