@@ -89,7 +89,7 @@
     },
 
     "//": "The Caldera Service is used for newer versions of the game! For see what season are now supported look CalderaService/guids.json and add the version on 'bGameVersion'",
-    "bEnableCalderaService": false,
+    "bEnableCalderaService": true,
     "bGameVersion": "27.11",
     "bCalderaServicePort": 5000,
 
