@@ -283,5 +283,6 @@ function DateAddHours(pdate, number) {
 
 config.gameServerIP = [process.env.GAME_SERVER_IP];
 config.bot_token = process.env.BOT_TOKEN;
+config.bEnableCalderaService = process.env.CALDERA_SERVICE === "true";
 
 module.exports = app;
