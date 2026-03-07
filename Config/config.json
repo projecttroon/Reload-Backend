@@ -1,5 +1,5 @@
 {
-    "moderators": ["discordId", "discordId2"],
+    "moderators": ["", ""],
   "discord": {
     "bUseDiscordBot": true,
     "bot_token": "",
