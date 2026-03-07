@@ -285,23 +285,19 @@ config.gameServerIP = [process.env.GAME_SERVER_IP];
 config.bot_token = process.env.BOT_TOKEN;
 config.bEnableCalderaService = process.env.CALDERA_SERVICE === "true";
 
-const contentPagesPath = "./responses/contentpages.json";
+try {
+    const filePath = "./responses/contentpages.json";
+    let data = fs.readFileSync(filePath, "utf8");
 
-let contentPages = JSON.parse(fs.readFileSync(contentPagesPath, "utf8"));
+    const newTitle = process.env.CONTENT_TITLE || "Reload Modified";
 
-function replaceTitles(obj) {
-    for (let key in obj) {
-        if (typeof obj[key] === "object") {
-            replaceTitles(obj[key]);
-        }
-        if (key === "title") {
-            obj[key] = process.env.CONTENT_TITLE;
-        }
-    }
+    data = data.replace(/"title":\s*"Reload Modified"/g, `"title": "${newTitle}"`);
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Content titles updated.");
+} catch (err) {
+    console.error("Failed to update titles:", err);
 }
-
-replaceTitles(contentPages);
-
-fs.writeFileSync(contentPagesPath, JSON.stringify(contentPages, null, 2));
 
 module.exports = app;
