@@ -5,7 +5,7 @@ const log = require("../../../structs/log.js");
 
 module.exports = {
     commandInfo: {
-        name: "claimReward",
+        name: "claimreward",
         description: "Claim your daily 250 V-Bucks"
     },
     async execute(interaction) {
