@@ -290,14 +290,17 @@ try {
     let data = fs.readFileSync(filePath, "utf8");
 
     const newTitle = process.env.CONTENT_TITLE || "Reload Modified";
+    const newBody = process.env.CONTENT_BODY || "Created by Rodrigo";
 
     data = data.replace(/"title":\s*"Reload Modified"/g, `"title": "${newTitle}"`);
 
+    data = data.replace(/"body":\s*"Created by Rodrigo"/g, `"body": "${newBody}"`);
+
     fs.writeFileSync(filePath, data);
 
-    console.log("Content titles updated.");
+    console.log("Content titles and body updated.");
 } catch (err) {
-    console.error("Failed to update titles:", err);
+    console.error("Failed to update contentpages:", err);
 }
 
 module.exports = app;
