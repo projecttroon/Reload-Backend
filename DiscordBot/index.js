@@ -34,11 +34,14 @@ client.once("ready", () => {
             }
         }
     }
+if (config.discord.bEnableInGamePlayerCount) {
+    function updateBotStatus() {
+        if (global.Clients && Array.isArray(global.Clients)) {
 
-    if (config.discord.bEnableInGamePlayerCount) {
-        function updateBotStatus() {
-            if (global.Clients && Array.isArray(global.Clients)) {
-                client.user.setActivity(`${global.Clients.length} Players Online`, { type: "WATCHING" });
+            const rpcText = process.env.BOT_RPC_TEXT || "Players Online";
+            const rpcType = process.env.BOT_RPC_TYPE || "WATCHING";
+
+            client.user.setActivity(`${global.Clients.length} ${rpcText}`, { type: rpcType });
             }
         }
 
