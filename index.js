@@ -319,4 +319,20 @@ try {
     console.error("Failed to update DefaultRuntimeOptions.ini:", err);
 }
 
+try {
+    const filePath = "./CloudStorage/DefaultRuntimeOptions.ini";
+
+    let data = fs.readFileSync(filePath, "utf8");
+
+    const enableBattlePass = process.env.ENABLE_BATTLEPASS === "true";
+
+    data = data.replace(/bEnableBattlePass=.*/g, `bEnableBattlePass=${enableBattlePass}`);
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Battle Pass tab updated:", enableBattlePass);
+} catch (err) {
+    console.error("Failed to update BattlePass setting:", err);
+}
+
 module.exports = app;
