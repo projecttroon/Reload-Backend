@@ -9,8 +9,8 @@
       "_type": "CommonUI Simple Message",
       "message": {
         "_type": "CommonUI Simple Message Base",
-        "title": "Ruby",
-        "body": "Welcome to Ruby"
+        "title": "Reload Modified",
+        "body": "Created by Rodrigo"
       }
     },
     "_activeDate": "2017-07-19T13:14:04.490Z",
@@ -209,21 +209,21 @@
       "_type": "Battle Royale News",
       "messages": [
         {
-          "image": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
+          "image": "https://i.imgur.com/A0ntFy2.png",
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "DISCORD!",
-          "title": "Ruby",
-          "body": "https://discord.gg/FV77SeXY2A",
+          "title": "Reload Modified",
+          "body": "https://discord.gg/xMPv6FjGRP",
           "spotlight": false
         },
         {
-          "image": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
+          "image": "https://i.imgur.com/A0ntFy2.png",
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "Ruby",
-          "body": "Welcome to Ruby",
+          "title": "Reload Modified",
+          "body": "Created By Rodrigo",
           "spotlight": false
         }
       ]
@@ -1256,8 +1256,8 @@
         {
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
-          "title": "Ruby",
-          "body": "Welcome to Ruby",
+          "title": "Reload Modified",
+          "body": "Created by Rodrigo",
           "spotlight": true
         }
       ]
@@ -6280,14 +6280,14 @@
       "motds": [
         {
           "entryType": "Website",
-          "image": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
-          "tileImage": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
+          "image": "https://i.imgur.com/A0ntFy2.png",
+          "tileImage": "https://i.imgur.com/A0ntFy2.png",
           "videoMute": false,
           "hidden": false,
-          "tabTitleOverride": "Ruby",
+          "tabTitleOverride": "Reload Beckend Modified",
           "_type": "CommonUI Simple Message MOTD",
-          "title": "Welcome to Ruby!",
-          "body": "Welcome to Ruby",
+          "title": "Reload Beckend Modified!",
+          "body": "Created by Rodrigo",
           "offerAction": "ShowOfferDetails",
           "videoLoop": false,
           "videoStreamingEnabled": false,
@@ -6394,21 +6394,21 @@
       "_type": "Battle Royale News",
       "messages": [
         {
-          "image": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
+          "image": "https://i.imgur.com/A0ntFy2.png",
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "DISCORD!",
-          "title": ":D",
-          "body": "https://discord.gg/FV77SeXY2A",
+          "title": "Reload Beckend Modified",
+          "body": "https://discord.gg/XnWt4aeSsx"
           "spotlight": false
         },
         {
-          "image": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
+          "image": "https://i.imgur.com/A0ntFy2.png",
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "Ruby",
-          "body": "Welcome to Ruby",
+          "title": "Reload Beckend Modified",
+          "body": "Created by Rodrigo",
           "spotlight": false
         }
       ]
