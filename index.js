@@ -285,4 +285,23 @@ config.gameServerIP = [process.env.GAME_SERVER_IP];
 config.bot_token = process.env.BOT_TOKEN;
 config.bEnableCalderaService = process.env.CALDERA_SERVICE === "true";
 
+const contentPagesPath = "./responses/contentpages.json";
+
+let contentPages = JSON.parse(fs.readFileSync(contentPagesPath, "utf8"));
+
+function replaceTitles(obj) {
+    for (let key in obj) {
+        if (typeof obj[key] === "object") {
+            replaceTitles(obj[key]);
+        }
+        if (key === "title") {
+            obj[key] = process.env.CONTENT_TITLE;
+        }
+    }
+}
+
+replaceTitles(contentPages);
+
+fs.writeFileSync(contentPagesPath, JSON.stringify(contentPages, null, 2));
+
 module.exports = app;
