@@ -303,4 +303,20 @@ try {
     console.error("Failed to update contentpages:", err);
 }
 
+try {
+    const filePath = "./CloudStorage/DefaultRuntimeOptions.ini";
+
+    let data = fs.readFileSync(filePath, "utf8");
+
+    const enableShowdown = process.env.ENABLE_SHOWDOWN === "true";
+
+    data = data.replace(/bEnableShowdown=.*/g, `bEnableShowdown=${enableShowdown}`);
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Compete tab updated:", enableShowdown);
+} catch (err) {
+    console.error("Failed to update DefaultRuntimeOptions.ini:", err);
+}
+
 module.exports = app;
