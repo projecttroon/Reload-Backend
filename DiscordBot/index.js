@@ -5,6 +5,7 @@ const path = require("path");
 const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
 const log = require("../structs/log.js");
 const Users = require("../model/user.js");
+require("dotenv").config();
 
 client.once("ready", () => {
     log.bot("Bot is up and running!");
