@@ -353,4 +353,20 @@ try {
     console.error("Failed to update catalog prices:", err);
 }
 
+try {
+    const configPath = "./Config/config.json";
+
+    let config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+
+    if (process.env.MODERATORS) {
+        config.moderators = process.env.MODERATORS.split(",");
+    }
+
+    fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+
+    console.log("Moderators updated:", config.moderators);
+} catch (err) {
+    console.error("Failed to update moderators:", err);
+}
+
 module.exports = app;
