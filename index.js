@@ -288,4 +288,10 @@ config.gameServerIP = [process.env.GAME_SERVER_IP];
 
 console.log(config);
 
+let config = JSON.parse(fs.readFileSync("config.json", "utf8"));
+
+config.bot_token = process.env.BOT_TOKEN;
+
+console.log(config.bot_token);
+
 module.exports = app;
