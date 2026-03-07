@@ -335,4 +335,22 @@ try {
     console.error("Failed to update BattlePass setting:", err);
 }
 
+try {
+    const filePath = "./responses/catalog.json";
+
+    let data = fs.readFileSync(filePath, "utf8");
+
+    const price = process.env.CATALOG_PRICE || 0;
+
+    data = data.replace(/"regularPrice":\s*\d+/g, `"regularPrice": ${price}`);
+    data = data.replace(/"finalPrice":\s*\d+/g, `"finalPrice": ${price}`);
+    data = data.replace(/"basePrice":\s*\d+/g, `"basePrice": ${price}`);
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Catalog prices updated to:", price);
+} catch (err) {
+    console.error("Failed to update catalog prices:", err);
+}
+
 module.exports = app;
