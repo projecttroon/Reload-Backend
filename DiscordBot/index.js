@@ -38,7 +38,7 @@ client.once("ready", () => {
     if (config.discord.bEnableInGamePlayerCount) {
         function updateBotStatus() {
             if (global.Clients && Array.isArray(global.Clients)) {
-                client.user.setActivity(`${global.Clients.length} `Player Online`, { type: "WATCHING" });
+                client.user.setActivity(`${global.Clients.length} Players Online`, { type: "WATCHING" });
             }
         }
 
@@ -152,4 +152,4 @@ process.on("uncaughtExceptionMonitor", (err, origin) => {
     console.log("Uncaught Exception Monitor:", err, origin);
 });
 
-client.login(config.discord.bot_token);
+client.login(process.env.BOT_TOKEN);
