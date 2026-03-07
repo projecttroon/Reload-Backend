@@ -548,6 +548,7 @@ async function registerUser(discordId, username, email, plainPassword) {
         profiles: profileManager.createProfiles(i.accountId),
       });
       await Friends.create({ created: i.created, accountId: i.accountId });
+      await Arena.create({ accountId: i.accountId, hype: 0, division: 0 });
     });
   } catch (err) {
     log.error("Error during user registration:", err);
