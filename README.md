@@ -100,7 +100,7 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 3) You have to get your discord id and replace discordId with it.
 4) You can set multiple moderators like this `["discordId","discordId2"]`.
 ### How to setup multiple gameservers
-1) Go to **Config/config.json** in the directory you extracted Reload Backend into.
+1) Go to **.env** in the directory you extracted Reload Backend into.
 2) Open it, you should see a **"gameServerIP"** section in the file.
 3) To add more gameservers you will have to do it like this `"gameServerIP": ["127.0.0.1:7777:playlist_defaultsolo", "127.0.0.1:7777:playlist_defaultduo"],`
 4) You have now added solos and duos to your matchmaking 
