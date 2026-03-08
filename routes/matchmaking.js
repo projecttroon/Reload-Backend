@@ -7,6 +7,7 @@ const MMCode = require("../model/mmcodes.js");
 const { verifyToken } = require("../tokenManager/tokenVerify.js");
 const qs = require("qs");
 const error = require("../structs/error.js");
+require("dotenv").config();
 
 let buildUniqueId = {};
 
@@ -29,7 +30,7 @@ app.get("/fortnite/api/game/v2/matchmakingservice/ticket/player/*", verifyToken,
     const rawPlaylist = bucketId.split(":")[3];
     let playlist = functions.PlaylistNames(rawPlaylist).toLowerCase();
 
-    const gameServers = config.gameServerIP;
+    const gameServers = process.env.GAME_SERVER_IP;
     let selectedServer = gameServers.find(server => server.split(":")[2].toLowerCase() === playlist);
     if (!selectedServer) {
         log.debug("No server found for playlist", playlist);
@@ -77,7 +78,7 @@ app.get("/fortnite/api/matchmaking/session/:sessionId", verifyToken, async (req,
     const playlist = await global.kv.get(`playerPlaylist:${req.user.accountId}`);
     let kvDocument = await global.kv.get(`playerCustomKey:${req.user.accountId}`);
     if (!kvDocument) {
-        const gameServers = config.gameServerIP;
+        const gameServers = process.env.GAME_SERVER_IP;
         let selectedServer = gameServers.find(server => server.split(":")[2] === playlist);
         if (!selectedServer) {
             log.debug("No server found for playlist", playlist);
