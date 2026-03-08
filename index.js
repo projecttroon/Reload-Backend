@@ -385,4 +385,20 @@ try {
     console.error("Failed to update title_line_1:", err);
 }
 
+try {
+    const filePath = "./CloudStorage/DefaultGame.ini";
+
+    let data = fs.readFileSync(filePath, "utf8");
+
+    const creativeMode = process.env.ENABLE_CREATIVE_MODE === "true";
+
+    data = data.replace(/bEnableCreativeMode=.*/g, `bEnableCreativeMode=${creativeMode}`);
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Creative Mode updated:", creativeMode);
+} catch (err) {
+    console.error("Failed to update Creative Mode:", err);
+}
+
 module.exports = app;
