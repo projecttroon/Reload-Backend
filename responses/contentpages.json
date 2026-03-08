@@ -1281,8 +1281,8 @@
           "gamemodes": [],
           "hidden": false,
           "_type": "CommonUI Emergency Notice Base",
-          "title": "Ruby",
-          "body": "Welcome to Ruby"
+          "title": "Reload Modified",
+          "body": "Created by Rodrigo"
         }
       ]
     },
@@ -6318,11 +6318,11 @@
       ],
       "messages": [
         {
-          "image": "https://i.postimg.cc/htNF10P4/Ruby-BRNEWS.png",
+          "image": "https://i.imgur.com/A0ntFy2.png",
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
-          "adspace": "Ruby",
-          "title": "Ruby",
+          "adspace": "Reload Modified",
+          "title": "Reload Modified",
           "body": "Welcome to Ruby",
           "spotlight": false
         }
