@@ -409,4 +409,24 @@ if (process.env.DATABASE_URL) {
 
 console.log("Database:", config.database);
 
+try {
+    const filePath = "./CloudStorage/DefaultGame.ini";
+
+    let data = fs.readFileSync(filePath, "utf8");
+
+    const enabled = process.env.SHOWDOWN_SOLO_ENABLED === "true";
+
+    data = data.replace(
+        /\+FrontEndPlaylistData=\(PlaylistName=Playlist_ShowdownAlt_Solo, PlaylistAccess=\(bEnabled=(True|False)/g,
+        `+FrontEndPlaylistData=(PlaylistName=Playlist_ShowdownAlt_Solo, PlaylistAccess=(bEnabled=${enabled ? "True" : "False"}`
+    );
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Showdown Solo enabled:", enabled);
+
+} catch (err) {
+    console.error("Failed to update Showdown Solo:", err);
+}
+
 module.exports = app;
