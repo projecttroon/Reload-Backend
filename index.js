@@ -369,4 +369,20 @@ try {
     console.error("Failed to update moderators:", err);
 }
 
+try {
+    const filePath = "./responses/contentpages.json";
+
+    let data = fs.readFileSync(filePath, "utf8");
+
+    const newTitle = process.env.LATEGAME_TITLE || "";
+
+    data = data.replace(/"title_line_1":\s*".*?"/g, `"title_line_1": "${newTitle}"`);
+
+    fs.writeFileSync(filePath, data);
+
+    console.log("Updated title_line_1:", newTitle);
+} catch (err) {
+    console.error("Failed to update title_line_1:", err);
+}
+
 module.exports = app;
