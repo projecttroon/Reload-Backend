@@ -401,14 +401,6 @@ try {
     console.error("Failed to update Creative Mode:", err);
 }
 
-let config = JSON.parse(fs.readFileSync("./Config/config.json", "utf8"));
-
-if (process.env.DATABASE_URL) {
-    config.database = process.env.DATABASE_URL;
-}
-
-console.log("Database:", config.database);
-
 try {
     const filePath = "./CloudStorage/DefaultGame.ini";
 
