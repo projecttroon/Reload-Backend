@@ -1205,7 +1205,7 @@
           "flavor_description": "cool",
           "poster_front_image": "https://cdn.projecthelix.website/Arena_Playlist.png",
           "short_format_title": "Event Sessions",
-          "title_line_1": "Lategame Arena",
+          "title_line_1": "Lategame Test",
           "shadow_color": "1B1B1B",
           "details_description": "description  here  ig?",
           "background_left_color": "F81B2D",
@@ -6392,25 +6392,25 @@
   "creativenews": {
     "news": {
       "_type": "Battle Royale News",
-      "messages": [
-        {
-          "image": "https://i.imgur.com/A0ntFy2.png",
-          "hidden": false,
-          "_type": "CommonUI Simple Message Base",
-          "adspace": "DISCORD!",
-          "title": "Reload Beckend Modified",
-          "body": "https://discord.gg/XnWt4aeSsx"
-          "spotlight": false
-        },
-        {
-          "image": "https://i.imgur.com/A0ntFy2.png",
-          "hidden": false,
-          "_type": "CommonUI Simple Message Base",
-          "adspace": "ENJOY!",
-          "title": "Reload Beckend Modified",
-          "body": "Created by Rodrigo",
-          "spotlight": false
-        }
+      "messages": [      
+{
+  "image": "https://i.imgur.com/A0ntFy2.png",
+  "hidden": false,
+  "_type": "CommonUI Simple Message Base",
+  "adspace": "DISCORD!",
+  "title": "Reload Beckend Modified",
+  "body": "https://discord.gg/XnWt4aeSsx",
+  "spotlight": false
+},
+{
+  "image": "https://i.imgur.com/A0ntFy2.png",
+  "hidden": false,
+  "_type": "CommonUI Simple Message Base",
+  "adspace": "ENJOY!",
+  "title": "Reload Beckend Modified",
+  "body": "Created by Rodrigo",
+  "spotlight": false
+}
       ]
     },
     "_title": "Creativenews",
@@ -6426,3 +6426,5 @@
 }
             
                   
+
+       
