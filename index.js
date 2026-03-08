@@ -281,9 +281,6 @@ function DateAddHours(pdate, number) {
     return date;
 }
 
-config.gameServerIP = [process.env.GAME_SERVER_IP];
-config.bot_token = process.env.BOT_TOKEN;
-config.bEnableCalderaService = process.env.CALDERA_SERVICE === "true";
 
 try {
     const filePath = "./responses/contentpages.json";
