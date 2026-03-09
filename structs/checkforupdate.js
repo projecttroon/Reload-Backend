@@ -14,7 +14,7 @@ class CheckForUpdate {
             const latestVersion = packageJson.version;
 
             if (isNewerVersion(latestVersion, currentVersion)) {
-                log.checkforupdate(`A new version of the Backend has been released! ${currentVersion} -> ${latestVersion}, Download it from the GitHub repo.`);
+                log.checkforupdate(`A new version of the Reload Beckend Modified has been released! ${currentVersion} -> ${latestVersion}, Download it from the GitHub repo.`);
                 return true;
             } else {
 
