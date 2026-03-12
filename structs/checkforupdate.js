@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 class CheckForUpdate {
     static async checkForUpdate(currentVersion) {
         try {
-            const response = await fetch('https://raw.githubusercontent.com/projecttroon/Reload-Backend/refs/heads/main/package.json);
+            const response = await fetch('https://raw.githubusercontent.com/Project-Reload/Reload-Backend/refs/heads/main/package.json');
             if (!response.ok) {
                 log.error(`Failed to fetch package.json. Status: ${response.status}`);
                 return false;
@@ -14,7 +14,7 @@ class CheckForUpdate {
             const latestVersion = packageJson.version;
 
             if (isNewerVersion(latestVersion, currentVersion)) {
-                log.checkforupdate(`A new version of the Reload Beckend Modified has been released! ${currentVersion} -> ${latestVersion}, Download it from the GitHub repo.`);
+                log.checkforupdate(`A new version of the Backend has been released! ${currentVersion} -> ${latestVersion}, Download it from the GitHub repo.`);
                 return true;
             } else {
 
@@ -43,4 +43,4 @@ function isNewerVersion(latest, current) {
     return false;
 }
 
-module.exports = CheckForUpdate;
+module.exports = CheckForUpd
