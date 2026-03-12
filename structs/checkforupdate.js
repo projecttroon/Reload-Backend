@@ -42,5 +42,4 @@ function isNewerVersion(latest, current) {
 
     return false;
 }
-
-module.exports = CheckForUpd
+module.exports = CheckForUpdate;
